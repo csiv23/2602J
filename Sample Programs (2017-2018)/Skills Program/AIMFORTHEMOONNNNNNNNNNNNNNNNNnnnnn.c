@@ -605,7 +605,7 @@ SensorValue(LeftEncoder) = 0;
 			 untilLight(2850, in2);
 			 baseControl(0, 0, 250);
 			//back out
-f
+
 			startTask(GyroReset);
 			wait1Msec(2100);
 			stopTask(GyroReset);

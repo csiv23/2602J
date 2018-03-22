@@ -34,7 +34,7 @@ task main()
 		}
 		else
 		{
-liftControl(0, 0);
+			liftControl(0, 0);
 		}
 		if(vexRT[Btn6D] == 1)
 		{
@@ -42,11 +42,11 @@ liftControl(0, 0);
 		}
 		else if(vexRT[Btn6U] == 1)
 		{
-		liftControl(-127, -127);
+			liftControl(-127, -127);
 		}
 		else
 		{
-		liftControl(0, 0);
+			liftControl(0, 0);
 		}
 	}
 }

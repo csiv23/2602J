@@ -28,6 +28,7 @@ nada = 0;
 
 while(1 == 1)
 {
-	if(vexRT)
+	if(vexRT[Btn5U] == 1)
+	{
 }
 }
