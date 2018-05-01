@@ -38,24 +38,12 @@ void intakeControlAuto(int intakePower, int intakeTime)
 task main()
 {
 	baseControlAuto(127, 0, 400);
-	baseControlAuto(127, 95, 2750);
+	baseControlAuto(127, 95, 1500);
 	baseControlAuto(0, 0, 100);
 	//drive to bananas
 
-	liftControlAuto(-127, 400);
-	//angle down to bananas
+	baseControlAuto(-127, -95, 1000);
+	baseControlAuto(0, 0, 100);
 
-	armControlAuto(127, 400);
-	liftControlAuto(-127, 100);
-	//cont. angle down
-	baseControlAuto(0, 0, 200);
-	liftControlAuto(0, 200);
-	armControlAuto(0, 200);
-
-	motor[leftSideDrive] = 127;
-	motor[rightSideDrive] = 127;
-	motor[intake] = -127;
-	wait1Msec(2500);
-	//get the nanners
 
 }

@@ -59,11 +59,56 @@ void pre_auton()
 /*  You must modify the code to add your own robot specific commands here.   */
 /*---------------------------------------------------------------------------*/
 
+void baseControlAuto(int leftSide, int rightSide, int baseTime)
+{
+	motor[leftSideDrive] = leftSide;
+	motor[rightSideDrive] = rightSide;
+	baseTime = wait1Msec(baseTime);
+}
+void liftControlAuto(int liftPower, int liftTime)
+{
+	motor[leftTurntable] = liftPower;
+	motor[rightTurntable] = liftPower;
+	liftTime = wait1Msec(liftTime);
+
+}
+
+void armControlAuto(int armPower, int armTime)
+{
+	motor[leftArm] = armPower;
+	motor[rightArm] = armPower;
+	armTime = wait1Msec(armTime);
+}
+
+void intakeControlAuto(int intakePower, int intakeTime)
+{
+	motor[intake] = intakePower;
+	intakeTime = wait1Msec(intakeTime);
+}
+
 task autonomous()
 {
-	motor[leftSideDrive] = 0;
-	motor[rightSideDrive] = 0;
-	wait1Msec(10000);
+	baseControlAuto(127, 0, 400);
+	baseControlAuto(127, 95, 2750);
+	baseControlAuto(0, 0, 100);
+	//drive to bananas
+
+	liftControlAuto(-127, 400);
+	//angle down to bananas
+
+	armControlAuto(127, 400);
+	liftControlAuto(-127, 100);
+	//cont. angle down
+	baseControlAuto(0, 0, 200);
+	liftControlAuto(0, 200);
+	armControlAuto(0, 200);
+
+	motor[leftSideDrive] = 127;
+	motor[rightSideDrive] = 127;
+	motor[intake] = -127;
+	wait1Msec(2500);
+	//get the nanners
+
 }
 
 /*---------------------------------------------------------------------------*/

@@ -1,8 +1,8 @@
 #pragma config(Motor,  port2,           leftSideDrive, tmotorVex393_MC29, openLoop)
 #pragma config(Motor,  port3,           rightSideDrive, tmotorVex393_MC29, openLoop, reversed)
 #pragma config(Motor,  port4,           rampTipper,    tmotorVex393_MC29, openLoop)
-#pragma config(Motor,  port5,           leftArm,       tmotorVex393_MC29, openLoop)
-#pragma config(Motor,  port6,           rightArm,      tmotorVex393_MC29, openLoop, reversed)
+#pragma config(Motor,  port5,           leftArm,       tmotorVex393_MC29, openLoop, reversed)
+#pragma config(Motor,  port6,           rightArm,      tmotorVex393_MC29, openLoop)
 #pragma config(Motor,  port7,           intake,        tmotorVex393_MC29, openLoop, reversed)
 #pragma config(Motor,  port8,           leftTurntable, tmotorVex393_MC29, openLoop)
 #pragma config(Motor,  port9,           rightTurntable, tmotorVex393_MC29, openLoop)
@@ -59,11 +59,44 @@ void pre_auton()
 /*  You must modify the code to add your own robot specific commands here.   */
 /*---------------------------------------------------------------------------*/
 
+void baseControlAuto(int leftSide, int rightSide, int baseTime)
+{
+	motor[leftSideDrive] = leftSide;
+	motor[rightSideDrive] = rightSide;
+	baseTime = wait1Msec(baseTime);
+}
+void liftControlAuto(int liftPower, int liftTime)
+{
+	motor[leftTurntable] = liftPower;
+	motor[rightTurntable] = liftPower;
+	liftTime = wait1Msec(liftTime);
+
+}
+
+void armControlAuto(int armPower, int armTime)
+{
+	motor[leftArm] = armPower;
+	motor[rightArm] = armPower;
+	armTime = wait1Msec(armTime);
+}
+
+void intakeControlAuto(int intakePower, int intakeTime)
+{
+	motor[intake] = intakePower;
+	intakeTime = wait1Msec(intakeTime);
+}
+
 task autonomous()
 {
-	motor[leftSideDrive] = 0;
-	motor[rightSideDrive] = 0;
-	wait1Msec(10000);
+	baseControlAuto(127, 0, 400);
+	baseControlAuto(127, 95, 1000);
+	baseControlAuto(0, 0, 100);
+	//drive to bananas
+
+	baseControlAuto(-127, -95, 1000);
+	baseControlAuto(0, 0, 100);
+
+
 }
 
 /*---------------------------------------------------------------------------*/
