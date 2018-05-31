@@ -1,0 +1,14 @@
+The RobotC Dictionary/Reference Guide for Team 2602J 2018-2019
+--------------------------------------------------------------
+
+
+Formatting:
+
+Semicolons (;): Used at the end of most lines of code, after every action.
+example: motor[x] = y;
+
+Parenthesis (): Used to indicate a value, usually speed. Also used in a usercontrol loop, typically with vexRT.
+example(s): motor[x] = (127);
+            (vexRT[Btn6U] == 1)
+            
+            
