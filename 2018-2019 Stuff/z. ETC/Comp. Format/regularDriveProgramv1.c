@@ -58,56 +58,32 @@ void pre_auton()
 /*                                                                           */
 /*  You must modify the code to add your own robot specific commands here.   */
 /*---------------------------------------------------------------------------*/
-
-void baseControlAuto(int leftSide, int rightSide, int baseTime)
+task Battery()
 {
-	motor[leftSideDrive] = leftSide;
-	motor[rightSideDrive] = rightSide;
-	baseTime = wait1Msec(baseTime);
+bLCDBacklight = true;
+string mainBattery, backupBattery;
+
+while(true)
+{
+	clearLCDLine(0);
+	clearLCDLine(1);
+
+	//display
+
+	displayLCDString(0, 0, "Primary: ");
+	sprintf(mainBattery, "%1.2f%c", nImmediateBatteryLevel/1000.0,'V'); //Build the value to be displayed
+	displayNextLCDString(mainBattery);
+
+	displayLCDString(1, 0, "Backup:  ");
+	sprintf(backupBattery, "%1.2f%c", BackupBatteryLevel/1000.0,'V');
+	displayNextLCDString(backupBattery);
+
+	wait1Msec(100);
 }
-void liftControlAuto(int liftPower, int liftTime)
-{
-	motor[leftTurntable] = liftPower;
-	motor[rightTurntable] = liftPower;
-	liftTime = wait1Msec(liftTime);
-
-}
-
-void armControlAuto(int armPower, int armTime)
-{
-	motor[leftArm] = armPower;
-	motor[rightArm] = armPower;
-	armTime = wait1Msec(armTime);
-}
-
-void intakeControlAuto(int intakePower, int intakeTime)
-{
-	motor[intake] = intakePower;
-	intakeTime = wait1Msec(intakeTime);
 }
 
 task autonomous()
 {
-	baseControlAuto(127, 0, 400);
-	baseControlAuto(127, 95, 2750);
-	baseControlAuto(0, 0, 100);
-	//drive to bananas
-
-	liftControlAuto(-127, 400);
-	//angle down to bananas
-
-	armControlAuto(127, 400);
-	liftControlAuto(-127, 100);
-	//cont. angle down
-	baseControlAuto(0, 0, 200);
-	liftControlAuto(0, 200);
-	armControlAuto(0, 200);
-
-	motor[leftSideDrive] = 127;
-	motor[rightSideDrive] = 127;
-	motor[intake] = -127;
-	wait1Msec(2500);
-	//get the nanners
 
 }
 
@@ -120,7 +96,29 @@ task autonomous()
 /*                                                                           */
 /*  You must modify the code to add your own robot specific commands here.   */
 /*---------------------------------------------------------------------------*/
+task Battery()
+{
+bLCDBacklight = true;
+string mainBattery, backupBattery;
 
+while(true)
+{
+	clearLCDLine(0);
+	clearLCDLine(1);
+
+	//display
+
+	displayLCDString(0, 0, "Primary: ");
+	sprintf(mainBattery, "%1.2f%c", nImmediateBatteryLevel/1000.0,'V'); //Build the value to be displayed
+	displayNextLCDString(mainBattery);
+
+	displayLCDString(1, 0, "Backup:  ");
+	sprintf(backupBattery, "%1.2f%c", BackupBatteryLevel/1000.0,'V');
+	displayNextLCDString(backupBattery);
+
+	wait1Msec(100);
+}
+}
 
 void liftControl(int liftPower)
 {
