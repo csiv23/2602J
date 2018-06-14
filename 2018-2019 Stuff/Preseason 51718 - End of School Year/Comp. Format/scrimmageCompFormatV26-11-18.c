@@ -165,33 +165,20 @@ task usercontrol()
 			{
 				startTask(Reverse);
 			}
-
-
-			if(vexRT[Btn5U] == 1)
-			{
-				motor[clawMotor] = 60;
-			}
-			else if(vexRT[Btn5D] == 1)
-			{
-				motor[clawMotor] = -60;
-			}
-			else
-			{
-				motor[clawMotor] = 0;
-			}
-
-				if(vexRT[Btn5U] == 1)
-			{
-				motor[clawMotor] = 60;
-			}
-			else if(vexRT[Btn5D] == 1)
-			{
-				motor[clawMotor] = -60;
-			}
-			else
-			{
-				motor[clawMotor] = 0;
-			}
 		}
-}
-}
+
+				if(vexRT[Btn6U] == 1)
+			{
+				motor[clawMotor] = 127;
+			}
+			else if(vexRT[Btn6D] == 1)
+			{
+				motor[clawMotor] = -127;
+			}
+			else
+			{
+				motor[clawMotor] = 0;
+			}
+
+		}
+	}
